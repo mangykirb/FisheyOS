@@ -19,16 +19,15 @@ start:
     jmp .print
 
 load_kernel:
-    ; load kernel from disk (sector 2+)
-    mov ah, 0x02        ; BIOS read
-    mov al, 20         ; number of sectors
+    
+    mov ah, 0x02        
+    mov al, 20         
     mov ch, 0
-    mov cl, 2           ; start from sector 2
+    mov cl, 2          
     mov dh, 0
-    mov bx, 0x1000      ; load address
+    mov bx, 0x1000    
     int 0x13
-
-    ; switch to protected mode
+    
     cli
     lgdt [gdt_descriptor]
 
@@ -38,8 +37,7 @@ load_kernel:
 
     jmp 0x08:protected_mode
 
-; -----------------------
-; GDT
+
 gdt_start:
     dq 0x0000000000000000
     dq 0x00CF9A000000FFFF ; code
@@ -50,7 +48,7 @@ gdt_descriptor:
     dw gdt_end - gdt_start - 1
     dd gdt_start
 
-; -----------------------
+
 [bits 32]
 protected_mode:
     mov ax, 0x10
