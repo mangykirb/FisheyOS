@@ -19,3 +19,5 @@ make sure you install stuff like qemu, gcc, nasm, and ld
 after that qemu will appear and let you do stuff
 
 yea thats it
+
+(working on DOS rq and added some mini cmd prompt)
